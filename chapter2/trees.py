@@ -23,3 +23,14 @@ def createDataSet():
 				[0, 1, 'no']]
 	labels = ['no surfacing', 'flippers']
 	return dataSet, labels
+
+
+# Divide data sets by given characteristics
+def splitDataSet(dataSet, axis, value):
+	retDataSet = []
+	for featVec in dataSet:
+		if featVec[axis] == value:
+			reducedFeatVec = featVec[:axis]
+			reducedFeatVec.extend(featVec[axis + 1])
+			retDataSet.append(reducedFeatVec)
+	return retDataSe
