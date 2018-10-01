@@ -117,6 +117,20 @@ def handwritingClassTest():
 
 
 
+def singleClass(file):
+	hwLabels = []
+	trainingFileList = listdir('trainingDigits')
+	m = len(trainingFileList)
+	trainingMat = zeros((m, 1024))
+	for i in range(m):
+		fileNameStr = trainingFileList[i]
+		fileStr = fileNameStr.split('.')[0]
+		classNumStr = int(fileStr.split('_')[0])
+		hwLabels.append(classNumStr)
+		trainingMat[i, :] = img2vector('trainingDigits/%s' % fileNameStr)
+	vectorUnderTest = img2vector(file)
+	classifierResult = classify0(vectorUnderTest, trainingMat, hwLabels, 5)
+	print "the classifier came back with: %d\n" % classifierResult
 
 
 
